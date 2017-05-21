@@ -65,15 +65,19 @@ See https://npm.im/${name} for more details.`.trim())
   }
 
   'action:build' () {
-    this.checkEmpty()
+    this.getConfig().then(() => {
+      this.checkEmpty()
 
-    this.getConfig().then(() => { bulbo.build() })
+      bulbo.build()
+    }).catch(e => console.log(e.stack || e))
   }
 
   'action:serve' () {
-    this.checkEmpty()
+    this.getConfig().then(() => {
+      this.checkEmpty()
 
-    this.getConfig().then(() => { bulbo.serve() }).catch(e => console.log(e.stack))
+      bulbo.serve()
+    }).catch(e => console.log(e.stack || e))
   }
 
   checkEmpty () {
@@ -102,10 +106,8 @@ See https://npm.im/${name} for more details.`.trim())
     return bulbo
       .cli
       .liftoff(this.name, { configName, configIsOptional, moduleIsOptional })
-      .then(({ module, config }) => {
+      .then(({ config }) => {
         this.emit('config', config)
-
-        return config
       })
   }
 
@@ -142,8 +144,8 @@ See https://npm.im/${name} for more details.`.trim())
     this.configName = name
   }
 
-  asset () {
-    bulbo.asset.apply(bulbo, arguments)
+  asset (...args) {
+    return bulbo.asset(...args)
   }
 
   dest (dest) {
