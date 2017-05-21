@@ -1,0 +1,38 @@
+{
+  "name": "berber",
+  "version": "0.1.0",
+  "description": "Static site generator generator on top of gulp ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kt3k/berber.git"
+  },
+  "keywords": [
+    "ssg",
+    "cli",
+    "blog",
+    "document",
+    "site"
+  ],
+  "author": "Yoshiya Hinosawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kt3k/berber/issues"
+  },
+  "homepage": "https://github.com/kt3k/berber#readme",
+  "dependencies": {
+    "action-selector": "^1.0.0",
+    "bulbo": "^6.12.0",
+    "callsites": "^2.0.0",
+    "chalk": "^1.1.3"
+  },
+  "devDependencies": {
+    "codecov": "^2.2.0",
+    "mocha": "^3.4.1",
+    "nyc": "^10.3.2",
+    "standard": "^10.0.2"
+  }
+}
