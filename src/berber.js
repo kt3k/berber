@@ -5,11 +5,18 @@ const { select } = require('action-selector')
 const chalk = require('chalk')
 const callsites = require('callsites')
 const findRoot = require('find-root')
+const pad = require('pad-right')
 
 bulbo.loggerTitle('berber')
 
 class Berber extends EventEmitter {
+  constructor () {
+    super()
+    this.actions = []
+  }
+
   /**
+   * The entry point of berber program.
    * @param {object} argv
    */
   main (argv) {
@@ -41,18 +48,21 @@ class Berber extends EventEmitter {
   }
 
   'action:help' () {
-    const version = this.getVersion()
+    this['action:version']()
+
     const name = this.name
     console.log(`
-${name}@${version}
-
 Usage:
   ${name} -h|--help    Shows the help message
   ${name} -v|--version Shows the version number
   ${name} serve        Serves all the assets at localhost
-  ${name} build        Builds all the assets to the dest
+  ${name} build        Builds all the assets to the dest`)
 
-See https://npm.im/${name} for more details.`.trim())
+    this.actions.forEach(action => {
+      console.log(`  ${name} ${pad(action.name, 12, ' ')} ${action.description}`)
+    })
+
+    console.log(`\nSee https://npm.im/${name} for more details.`)
   }
 
   'action:version' () {
@@ -63,19 +73,15 @@ See https://npm.im/${name} for more details.`.trim())
   }
 
   'action:build' () {
-    this.getConfig().then(() => {
-      this.checkEmpty()
+    this.checkEmpty()
 
-      bulbo.build()
-    }).catch(e => console.log(e.stack || e))
+    bulbo.build()
   }
 
   'action:serve' () {
-    this.getConfig().then(() => {
-      this.checkEmpty()
+    this.checkEmpty()
 
-      bulbo.serve()
-    }).catch(e => console.log(e.stack || e))
+    bulbo.serve()
   }
 
   checkEmpty () {
@@ -101,12 +107,9 @@ See https://npm.im/${name} for more details.`.trim())
     const configIsOptional = true
     const moduleIsOptional = true
 
-    return bulbo
-      .cli
+    return bulbo.cli
       .liftoff(this.name, { configName, configIsOptional, moduleIsOptional })
-      .then(({ config }) => {
-        this.emit('config', config)
-      })
+      .then(({ config }) => { this.emit('config', config) })
   }
 
   /**
@@ -117,6 +120,10 @@ See https://npm.im/${name} for more details.`.trim())
     return require(path.join(findRoot(this.callsite), 'package.json'))
   }
 
+  /**
+   * Gets the version number of the user project.
+   * @return {string}
+   */
   getVersion () {
     return this.getUserPackage().version
   }
@@ -142,6 +149,27 @@ See https://npm.im/${name} for more details.`.trim())
     this.configName = name
   }
 
+  /**
+   * Adds the action of the given name.
+   * @param {string} name The action name
+   * @param {string} description The description
+   * @param {Function} cb The action callback
+   */
+  addAction (name, description, cb) {
+    if (typeof description === 'function') {
+      cb = description
+      description = ''
+    }
+
+    this[`action:${name}`] = cb
+    this.actions.push({ name, description })
+  }
+
+  /**
+   * Creates and returns bulbo's AssetFacade object.
+   * @param {string[]} args The list of the paths
+   * @return {AssetFacade}
+   */
   asset (...args) {
     return bulbo.asset(...args)
   }
