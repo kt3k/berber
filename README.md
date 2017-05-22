@@ -90,7 +90,19 @@ berber.name('foobar')
 
 With the above settings, your tool's name is `foobar` and when the user of this script invokes it, it looks up the config file of the name `foobar.yml` `foobar.json` or `foobar.js`. (If you want to change the name of the config file from your tool's name, then use `berber.configName(name)` method.)
 
-Then set the above script to `bin` property in your `package.json`. Then publish it to npm and your command works like the below:
+Then set the above script to `bin` property in your `package.json`.
+
+```json
+{
+  ...
+  "bin": {
+    "foobar": "index.js"
+  },
+  ...
+}
+```
+
+Then publish it to npm and your command works like the below:
 
 ```
 ./node_modules/.bin/foobar build # => builds your site
