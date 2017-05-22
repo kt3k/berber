@@ -11,15 +11,13 @@ bulbo.loggerTitle('berber')
 class Berber extends EventEmitter {
   /**
    * @param {object} argv
-   * @param {string} callsite The place where berber is required
    */
-  main (argv, callsite) {
+  main (argv) {
     if (!this.name) {
       throw new Error('Name is not specified. you have to name your command by berber.name(name).')
     }
 
     this.argv = argv
-    this.callsite = callsite
 
     const v = argv.v
     const h = argv.h
