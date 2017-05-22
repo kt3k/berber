@@ -1,4 +1,4 @@
-# berber v1.0.5
+# berber v1.0.6
 
 BADGES HERE
 
