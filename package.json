@@ -7,7 +7,8 @@
     "lint": "standard",
     "fix": "standard --fix",
     "test": "kocha test.js",
-    "cov": "nyc --reporter=lcov --reporter=text-summary npm test"
+    "cov": "nyc --reporter=lcov --reporter=text-summary npm test",
+    "codecov": "npm run cov && codecov"
   },
   "repository": {
     "type": "git",
