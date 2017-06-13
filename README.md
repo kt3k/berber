@@ -109,7 +109,19 @@ Then publish it to npm and your command works like the below:
 ./node_modules/.bin/foobar serve # => serves your site with builtin dev server
 ```
 
-That's it.
+That's the basics of berber.
+
+# Custom action
+
+You can add the custom action by calling `berber.action`.
+
+```js
+berber.action('post', 'Post the new article', () => {
+  doSomething()
+})
+```
+
+The above adds the command `foobar post` (given that your module name is `foobar`) and when the user of your module hit the command `foobar post`, then the above doSomething() is called.
 
 # Example
 
