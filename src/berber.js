@@ -161,7 +161,9 @@ Usage:
       description = ''
     }
 
-    this[`action:${name}`] = cb
+    this[`action:${name}`] = function () {
+      cb(this.argv)
+    }
     this.actions.push({ name, description })
   }
 

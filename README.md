@@ -116,12 +116,12 @@ That's the basics of berber.
 You can add the custom action by calling `berber.action`.
 
 ```js
-berber.action('post', 'Post the new article', () => {
-  doSomething()
+berber.action('post', 'Post the new article', argv => {
+  doSomething(argv)
 })
 ```
 
-The above adds the command `foobar post` (given that your module name is `foobar`) and when the user of your module hit the command `foobar post`, then the above doSomething() is called.
+The above adds the command `foobar post` (given that your module name is `foobar`) and when the user of your module hit the command `foobar post`, then the above doSomething(argv) is called, where argv is the cli options parsed by minimist.
 
 # Example
 
