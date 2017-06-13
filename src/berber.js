@@ -15,15 +15,17 @@ class Berber extends EventEmitter {
     this.actions = []
   }
 
+  checkName () {
+    if (!this.name) {
+      throw new Error('Name is not specified. you have to name your command by berber.name(name).')
+    }
+  }
+
   /**
    * The entry point of berber program.
    * @param {object} argv
    */
   main (argv) {
-    if (!this.name) {
-      throw new Error('Name is not specified. you have to name your command by berber.name(name).')
-    }
-
     this.argv = argv
 
     const v = argv.v
@@ -32,14 +34,15 @@ class Berber extends EventEmitter {
     const help = argv.help
     const action = argv._[0]
 
-    select(this, {
+    return new Promise(resolve => select(this, {
       version: v || version,
       help: h || help,
       serve: !action,
       [action]: true
     })
-    .on('action', action => action.call(this))
-    .on('no-action', name => this.noAction(name))
+      .on('action', resolve)
+      .on('no-action', name => this.noAction(name)))
+    .then(action => action.call(this))
   }
 
   noAction (name) {
@@ -104,11 +107,9 @@ Usage:
    */
   getConfig () {
     const configName = this.getConfigName()
-    const configIsOptional = true
-    const moduleIsOptional = true
 
     return bulbo.cli
-      .liftoff(this.name, { configName, configIsOptional, moduleIsOptional })
+      .liftoff(this.name, { configName, configIsOptional: true, moduleIsOptional: true })
       .then(({ config }) => { this.emit('config', config) })
   }
 

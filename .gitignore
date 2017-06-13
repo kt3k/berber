@@ -8,3 +8,6 @@
 
 # build
 /example/build
+
+# yarn
+/yarn-error.log

@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "standard",
     "fix": "standard --fix",
-    "test": "mocha test.js"
+    "test": "kocha test.js",
+    "cov": "nyc --reporter=lcov --reporter=text-summary npm test"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "codecov": "^2.2.0",
-    "mocha": "^3.4.1",
+    "kocha": "^1.5.6",
     "nyc": "^10.3.2",
     "standard": "^10.0.2"
   }
