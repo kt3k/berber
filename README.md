@@ -1,6 +1,7 @@
 # berber v1.1.1
 
-BADGES HERE
+[![CircleCI](https://circleci.com/gh/kt3k/berber.svg?style=svg)](https://circleci.com/gh/kt3k/berber)
+[![codecov](https://codecov.io/gh/kt3k/berber/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/berber)
 
 > Static site generator generator on top of gulp ecosystem
 
