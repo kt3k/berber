@@ -11,17 +11,17 @@ Berber is a tool for creating your own **static site generator cli** with the co
 With berber, you can build static site generator with 2 main commands `build` and `serve`.Suppose your tool's name is `foobar`, then your command works as development server when called like `foobar serve`. It outputs static resources when called like `foobar build`. What you need to set up with berber is only your build pipelines using `berber.asset(paths)` method.
 
 ```js
-const { asset } = require('berber')
+const berber = require('berber')
 
-asset('source/**/*.md').pipe(marked())
+berber.name('my-site-generator')
+
+berber.asset('source/**/*.md').pipe(marked())
 ```
 
 The above script works as cli. When called with `build` command like `script.js build`, then it outputs static resources to `build/` directory. When you want configure the output directory, then call `berber.dest(dest)` method:
 
 ```js
-const { dest } = require('berber')
-
-dest('output')
+berber.dest('output')
 ```
 
 When you want to this output path configurable by the user of your command, then bind to `config` event on `berber` object:
@@ -29,6 +29,8 @@ When you want to this output path configurable by the user of your command, then
 ```js
 const berber = require('berber')
 const { asset, dest } = berber
+
+berber.name('my-site-generator')
 
 berber.on('config', config => {
   const dest = config.dest || 'build'
@@ -125,12 +127,125 @@ berber.action('post', 'Post the new article', argv => {
 
 The above adds the command `foobar post` (given that your module name is `foobar`) and when the user of your module hit the command `foobar post`, then the above doSomething(argv) is called, where argv is the cli options parsed by minimist.
 
-# Example
+# APIs
 
-For an actual example, see [domaindoc][domaindoc]'s source code. [domaindoc][domaindoc] is a static site generator for building documentation site of domain models of your software.
+```js
+const {
+  name,
+  configName,
+  asset,
+  on,
+  dest,
+  base,
+  port,
+  debugPageTitle,
+  debugPagePath,
+  loggerTitle,
+  action
+} = require('berber')
+```
+
+## name(name)
+
+- @param {string} name The name of your command
+
+Sets the name of your command.
+
+## configName(name)
+
+- @param {string} name
+
+Sets the name of your command's config file. Default is the same as the name.
+
+## asset(...paths)
+
+- @param {string[]} paths
+- @return {AssetFacade}
+
+Sets the asset from the given paths. You can build your pipeline by chaining `.pipe()` call to each asset. The returned value has the same interface as [bulbo][bulbo]'s asset interface. See [bulbo][bulbo]'s document for details.
+
+## on(event, cb)
+
+- @param {string} event
+- @param {Function} cb
+
+Binds cb to the given event.
+
+Currently available events: `config`
+
+### config event
+
+At `config` event, `cb` is called with given user config object. You can set assets, paths etc according to the user's configuration.
+
+```js
+berber.on('config', config => {
+  berber.asset(`${config.source}/**/*.md`).pipe(marked())
+})
+```
+
+In the above example, your command look for `${config.source}/**/*.md` as markdown sources, which means your command's user can configure the location where markdown files exist.
+
+## dest(path)
+
+- @param {string} path
+
+Sets the build destination path.
+
+## base(path)
+
+- @param {string} path
+
+Sets the default basepath of your assets.
+
+If the basepath is `src` and one of your assets is `src/js/foo/bar.js`, then it builds into `build/js/foo/bar/js`. If you change base to `src/js`, then it builds into `build/foo/bar.js`.
+
+## port(port)
+
+- @param {number} port
+
+Sets the port number of the dev server.
+
+This works for `serve` command.
+
+## debugPageTitle(title)
+
+- @param {string} title
+
+Sets the title of the debug page.
+
+This works for `serve` command.
+
+## debugPagePath(path)
+
+- @param {string} path
+
+Sets the path of the debug page.
+
+This works for `serve` command.
+
+## loggerTitle(title)
+
+- @param {string} title
+
+Sets the title of the logger. Default is the same as `name` of your command.
+
+## action(name, description, cb)
+
+- @param {string} name The name of the action
+- @param {string} description The description of the command. This appears in the help message of your command.
+- @param {Function} cb The implementation of your command
+
+Sets the custom action to your command. `cb` takes the command line options as an object which is parsed by `minimist`.
+
+# Examples
+
+- [hello example](https://github.com/kt3k/berber/blob/master/examples/hello/index.js)
+- [domaindoc][domaindoc]
+  - [domaindoc][domaindoc] is a static site generator for building documentation site of domain models of your software.
 
 # License
 
 MIT
 
 [domaindoc]: https://github.com/kt3k/domaindoc
+[bulbo]: https://github.com/kt3k/bulbo
