@@ -1738,14 +1738,14 @@ kind-of@^4.0.0:
   dependencies:
     is-buffer "^1.1.5"
 
-kocha@^1.5.6:
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/kocha/-/kocha-1.5.6.tgz#6cf93580bfdaa358edbf22ca4f2bb7e6238602b5"
+kocha@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/kocha/-/kocha-1.7.0.tgz#46e05f7e06cbcb16f7ef5767096fbebeeffb5050"
   dependencies:
     action-selector "^1.0.0"
     diff "^3.2.0"
     glob "^7.1.2"
-    minimisted "^1.1.1"
+    minimisted "^2.0.0"
     ms "^2.0.0"
     stringifier "^1.3.0"
     supports-color "^3.2.3"
@@ -2024,6 +2024,12 @@ minimist@^1.1.0, minimist@^1.2.0:
 minimisted@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/minimisted/-/minimisted-1.1.1.tgz#c48e2f415a53d1f6b24b3a35a0d95601cfbd6811"
+  dependencies:
+    minimist "^1.2.0"
+
+minimisted@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/minimisted/-/minimisted-2.0.0.tgz#5e3295e74ed701b1cbeaa863a888181d6efbe8ce"
   dependencies:
     minimist "^1.2.0"
 
