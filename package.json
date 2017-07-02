@@ -29,7 +29,7 @@
   "homepage": "https://github.com/kt3k/berber#readme",
   "dependencies": {
     "action-selector": "^1.0.0",
-    "bulbo": "^6.12.1",
+    "bulbo": "^6.13.0",
     "callsites": "^2.0.0",
     "chalk": "^1.1.3",
     "find-root": "^1.0.0",
