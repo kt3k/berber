@@ -242,6 +242,8 @@ Sets the custom action to your command. `cb` takes the command line options as a
 - [hello example](https://github.com/kt3k/berber/blob/master/examples/hello/index.js)
 - [domaindoc][domaindoc]
   - [domaindoc][domaindoc] is a static site generator for building documentation site of domain models of your software.
+- [langsheet][langsheet]
+  - [langsheet][langsheet] is a static site generator for building i18n phrase table.
 
 # License
 
@@ -249,3 +251,4 @@ MIT
 
 [domaindoc]: https://github.com/kt3k/domaindoc
 [bulbo]: https://github.com/kt3k/bulbo
+[langsheet]: https://github.com/kt3k/langsheet
