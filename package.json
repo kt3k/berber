@@ -37,7 +37,7 @@
     "pad-right": "^0.2.2"
   },
   "devDependencies": {
-    "codecov": "^2.2.0",
+    "codecov": "^3.0.0",
     "kocha": "^1.8.0",
     "nyc": "^11.0.2",
     "standard": "^10.0.2"
