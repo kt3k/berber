@@ -223,6 +223,14 @@ Sets the path of the debug page.
 
 This works for `serve` command.
 
+Example:
+```js
+debugPagePath('__mytool__')
+// => This makes the debug page path to be `http://localhost:[port]/__mytool__`
+```
+
+The default of the debug page path is `__berber__`.
+
 ## loggerTitle(title)
 
 - @param {string} title
