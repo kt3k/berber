@@ -1,6 +1,6 @@
 {
   "name": "berber",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Static site generator generator on top of gulp ecosystem",
   "main": "index.js",
   "scripts": {
