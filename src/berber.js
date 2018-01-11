@@ -53,6 +53,14 @@ class Berber extends EventEmitter {
   'action:help' () {
     this['action:version']()
 
+    if (this.helpMessage) {
+      console.log(this.helpMessage)
+    } else {
+      this.showDefaultHelpMessage()
+    }
+  }
+
+  showDefaultHelpMessage () {
     const name = this.name
     console.log(`
 Usage:

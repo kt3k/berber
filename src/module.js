@@ -15,6 +15,7 @@ exports.debugPagePath = path => berber.debugPagePath(path)
 exports.loggerTitle = title => berber.loggerTitle(title)
 exports.main = argv => berber.main(argv)
 exports.setLogger = logger => bulbo.setLogger(logger)
+exports.helpMessage = helpMessage => { berber.helpMessage = helpMessage }
 exports.action = (name, description, cb) => berber.addAction(name, description, cb)
 
 // Access to internal berber instance
