@@ -17,6 +17,7 @@ exports.main = argv => berber.main(argv)
 exports.setLogger = logger => bulbo.setLogger(logger)
 exports.helpMessage = helpMessage => { berber.helpMessage = helpMessage }
 exports.action = (name, description, cb) => berber.addAction(name, description, cb)
+exports.addMiddleware = middleware => bulbo.addMiddleware(middleware)
 
 // Access to internal berber instance
 exports.instance = berber

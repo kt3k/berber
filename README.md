@@ -141,6 +141,7 @@ const {
   debugPageTitle,
   debugPagePath,
   loggerTitle,
+  addMiddleware,
   action
 } = require('berber')
 ```
@@ -236,6 +237,18 @@ The default of the debug page path is `__berber__`.
 - @param {string} title
 
 Sets the title of the logger. Default is the same as `name` of your command.
+
+## addMiddleware(middleware)
+
+- @param {Function} middleware
+
+Adds the connect compliant middleware to the server.
+
+```
+const livereload = require('connect-livereload')
+
+addMiddleware(() => livereload())
+```
 
 ## action(name, description, cb)
 
