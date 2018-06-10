@@ -92,6 +92,8 @@ Usage:
   'action:serve' () {
     this.checkEmpty()
 
+    this.emit('serve')
+
     bulbo.serve()
   }
 

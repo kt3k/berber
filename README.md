@@ -172,9 +172,9 @@ Sets the asset from the given paths. You can build your pipeline by chaining `.p
 
 Binds cb to the given event.
 
-Currently available events: `config`
+Currently available events: `config`, `serve`
 
-### config event
+### `config` event
 
 At `config` event, `cb` is called with given user config object. You can set assets, paths etc according to the user's configuration.
 
@@ -185,6 +185,10 @@ berber.on('config', config => {
 ```
 
 In the above example, your command look for `${config.source}/**/*.md` as markdown sources, which means your command's user can configure the location where markdown files exist.
+
+### `serve` event
+
+This event happens when the berber start serving files. The features which only work on serve actions, like livereload, should be set up on this event.
 
 ## dest(path)
 
@@ -267,6 +271,10 @@ Sets the custom action to your command. `cb` takes the command line options as a
   - [langsheet][langsheet] is a static site generator for building i18n phrase table.
 - [remarker][remarker]
   - [remarker][remarker] is a static site generator for slideshow, which generates remark-based slideshow html from input markdown files.
+
+# History
+
+- 2018-06-10   v1.4.0   Added `serve` event.
 
 # License
 
