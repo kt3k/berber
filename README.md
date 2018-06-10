@@ -1,4 +1,4 @@
-# berber v1.3.1
+# berber v1.4.0
 
 [![CircleCI](https://circleci.com/gh/kt3k/berber.svg?style=svg)](https://circleci.com/gh/kt3k/berber)
 [![codecov](https://codecov.io/gh/kt3k/berber/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/berber)
