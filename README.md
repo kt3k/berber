@@ -108,7 +108,7 @@ Then set the above script to `bin` property in your `package.json`.
 
 Then publish it to npm and your command works like the below:
 
-```
+```console
 ./node_modules/.bin/foobar build # => builds your site
 ./node_modules/.bin/foobar serve # => serves your site with builtin dev server
 ```
@@ -248,7 +248,7 @@ Sets the title of the logger. Default is the same as `name` of your command.
 
 Adds the connect compliant middleware to the server.
 
-```
+```js
 const livereload = require('connect-livereload')
 
 addMiddleware(() => livereload())
