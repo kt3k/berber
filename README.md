@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/kt3k/berber.svg?style=svg)](https://circleci.com/gh/kt3k/berber)
 [![codecov](https://codecov.io/gh/kt3k/berber/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/berber)
-[![Greenkeeper badge](https://badges.greenkeeper.io/kt3k/berber.svg)](https://greenkeeper.io/)
+
 
 > Static site generator generator on top of gulp ecosystem
 
