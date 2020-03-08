@@ -32,7 +32,7 @@
     "bulbo": "^7.0.0",
     "callsites": "^3.0.0",
     "chalk": "^3.0.0",
-    "find-root": "^1.0.0",
+    "find-root": "^1.1.0",
     "minimisted": "^2.0.0",
     "pad-right": "^0.2.2"
   },
