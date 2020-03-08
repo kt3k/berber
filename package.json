@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/kt3k/berber#readme",
   "dependencies": {
-    "action-selector": "^1.0.0",
+    "action-selector": "^1.0.1",
     "bulbo": "^7.0.0",
     "callsites": "^3.0.0",
     "chalk": "^3.0.0",
