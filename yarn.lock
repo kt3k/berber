@@ -159,10 +159,6 @@ acorn@^7.1.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.0.tgz#949d36f2c292535da602283586c2477c57eb2d6c"
   integrity sha512-kL5CuoXA/dgxlBbVrflsflzQ3PAas7RYZB52NOm/6839iVYJgKMJ3cQJD+t2i5+qFa8h3MDpEOJiS64E8JLnSQ==
 
-action-selector@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/action-selector/-/action-selector-1.0.0.tgz#572f4bd8144183fd32da5d52c90932e1dd77db49"
-
 action-selector@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/action-selector/-/action-selector-1.0.1.tgz#5ef40ded3321fd1df92e1536db3d2f2ad0ddc6e1"
