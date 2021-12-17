@@ -1,4 +1,4 @@
-# berber v1.4.0
+# berber v1.4.1
 
 [![CircleCI](https://circleci.com/gh/kt3k/berber.svg?style=svg)](https://circleci.com/gh/kt3k/berber)
 [![codecov](https://codecov.io/gh/kt3k/berber/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/berber)
@@ -274,7 +274,7 @@ Sets the custom action to your command. `cb` takes the command line options as a
 
 # History
 
-- 2018-06-10   v1.4.0   Added `serve` event.
+- 2018-06-10   v1.4.1   Added `serve` event.
 
 # License
 
